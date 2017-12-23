@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: user-center
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 7771

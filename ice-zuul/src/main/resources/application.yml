@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ice-zuul
+zuul:
+  prefix: /api #拦截所有api 打头的请求都经过zuul路由
+  routes:  #路由表定义
+    user-center:
+      path: /uc/**
+      serviceId: user-center
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8765
+
+
+
+
+

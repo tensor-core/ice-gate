@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ice-config
+  cloud:
+    config:
+      server:
+        git:
+          url: https://git.oschina.net/sunny_ice/ice-gate
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8750
+
+
+
+
+
