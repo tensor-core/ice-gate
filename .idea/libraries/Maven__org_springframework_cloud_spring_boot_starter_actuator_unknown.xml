@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.cloud:spring-boot-starter-actuator:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-boot-starter-actuator/unknown/spring-boot-starter-actuator-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-boot-starter-actuator/unknown/spring-boot-starter-actuator-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-boot-starter-actuator/unknown/spring-boot-starter-actuator-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

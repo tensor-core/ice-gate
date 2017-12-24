@@ -1,19 +1,20 @@
-package com.cssrc.config;
+package com.cssrc.config.server;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@EnableEurekaClient
-@SpringBootApplication
-@EnableDiscoveryClient
+/**
+ * @author jiangguangtao on 2017/9/13.
+ */
+@EnableDiscoveryClient // 注册的服务中心
 @EnableConfigServer
-@EnableAutoConfiguration
-public class ConfigServerBootstrap {
+@SpringBootApplication
+@EnableEurekaClient
+public class ConfigServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ConfigServerBootstrap.class,args);
+        SpringApplication.run(ConfigServerApplication.class, args);
     }
 }

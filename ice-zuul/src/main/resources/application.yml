@@ -1,18 +1,27 @@
 spring:
   application:
-    name: ice-zuul
+    name: gate
 zuul:
   prefix: /api #拦截所有api 打头的请求都经过zuul路由
   routes:  #路由表定义
     user-center:
       path: /uc/**
       serviceId: user-center
+      #stripPrefix:false #不移除前缀
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
 server:
   port: 8765
+
+ribbon:
+  eureka
 
 
 

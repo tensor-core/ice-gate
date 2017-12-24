@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ice-common/ice-common.iml" filepath="$PROJECT_DIR$/ice-common/ice-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ice-config/ice-config.iml" filepath="$PROJECT_DIR$/ice-config/ice-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ice-config-server/ice-config-server.iml" filepath="$PROJECT_DIR$/ice-config-server/ice-config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/ice-eureka/ice-eureka.iml" filepath="$PROJECT_DIR$/ice-eureka/ice-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/ice-gate.iml" filepath="$PROJECT_DIR$/ice-gate.iml" />
       <module fileurl="file://$PROJECT_DIR$/ice-uc/ice-uc.iml" filepath="$PROJECT_DIR$/ice-uc/ice-uc.iml" />

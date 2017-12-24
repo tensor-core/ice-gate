@@ -6,5 +6,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+  instance:
+      prefer-ip-address: true
+      hostname: localhost
+      lease-renewal-interval-in-seconds: 5
+      lease-expiration-duration-in-seconds: 15
 server:
   port: 7771

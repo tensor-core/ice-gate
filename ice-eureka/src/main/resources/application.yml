@@ -5,7 +5,9 @@ eureka:
   instance:
     hostname: localhost
   client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    registerWithEureka: false  #false 不作为一个客户端注册到注册中心
+    fetchRegistry: false   #为true可以启动，但是报异常：cannot execute request on any known server
+ # server:
+ #   enable-self-preservation: false    #设为false，关闭自我保护
+ #   eviction-interval-timer-in-ms: 60000  #清理间隔 单位为毫秒 60*1000
+

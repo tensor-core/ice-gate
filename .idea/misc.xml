@@ -8,6 +8,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/ice-config/pom.xml" />
         <option value="$PROJECT_DIR$/ice-eureka/pom.xml" />
       </set>
     </option>

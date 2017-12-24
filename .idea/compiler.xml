@@ -8,7 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ice-common" />
-        <module name="ice-config" />
+        <module name="ice-config-server" />
         <module name="ice-eureka" />
         <module name="ice-uc" />
         <module name="ice-zuul" />
@@ -17,6 +17,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="ice-common" target="1.8" />
       <module name="ice-config" target="1.8" />
+      <module name="ice-config-server" target="1.8" />
       <module name="ice-eureka" target="1.8" />
       <module name="ice-gate" target="1.8" />
       <module name="ice-uc" target="1.8" />

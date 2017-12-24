@@ -1,0 +1,23 @@
+server:
+  port: 8750
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+
+# 仓库为公开的，不需要验证
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/sunny_ice/ice-gate.git
+          search-paths: config-repos
+      label: master
