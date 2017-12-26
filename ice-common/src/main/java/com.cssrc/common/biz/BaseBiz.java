@@ -1,11 +1,18 @@
 package com.cssrc.common.biz;
 
+import com.cssrc.common.msg.TableResultResponse;
 import com.cssrc.common.util.EntityUtils;
 import com.cssrc.common.util.EntityUtils;
+import com.cssrc.common.util.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.entity.Example;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import java.util.Map;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 
 /**
  * Created by zhw
@@ -16,7 +23,7 @@ import java.util.List;
 public abstract class BaseBiz<M extends Mapper<T>, T> {
     @Autowired
     protected M mapper;
-    public void setMapper(M mapper){
+    public void setMapper(M mapper) {
         this.mapper = mapper;
     }
 
@@ -30,11 +37,6 @@ public abstract class BaseBiz<M extends Mapper<T>, T> {
     }
 
 
-//    public List<T> selectListByIds(List<Object> ids) {
-//        return mapper.selectByIds(ids);
-//    }
-
-
     public List<T> selectList(T entity) {
         return mapper.select(entity);
     }
@@ -45,24 +47,19 @@ public abstract class BaseBiz<M extends Mapper<T>, T> {
     }
 
 
-//    public Long selectCountAll() {
-//        return mapper.selectCount(null);
-//    }
-
-
     public Long selectCount(T entity) {
         return new Long(mapper.selectCount(entity));
     }
 
 
     public void insert(T entity) {
-        EntityUtils.setCreateInfo(entity);
+        EntityUtils.setCreatAndUpdatInfo(entity);
         mapper.insert(entity);
     }
 
 
     public void insertSelective(T entity) {
-        EntityUtils.setCreateInfo(entity);
+        EntityUtils.setCreatAndUpdatInfo(entity);
         mapper.insertSelective(entity);
     }
 
@@ -88,19 +85,25 @@ public abstract class BaseBiz<M extends Mapper<T>, T> {
         mapper.updateByPrimaryKeySelective(entity);
 
     }
-    public  List<T> selectByExample(Object example){
+
+    public List<T> selectByExample(Object example) {
         return mapper.selectByExample(example);
     }
-    public int selectCountByExample(Object example){
+
+    public int selectCountByExample(Object example) {
         return mapper.selectCountByExample(example);
     }
-//    public void deleteBatchByIds(List<Object> ids) {
-//        mapper.batchDeleteByIds(ids);
-//    }
 
-
-//    public void updateBatch(List<T> entitys) {
-//        mapper.batchUpdate(entitys);
-//    }
+    public TableResultResponse<T> selectByQuery(Query query) {
+        Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
+        Example example = new Example(clazz);
+        Example.Criteria criteria = example.createCriteria();
+        for (Map.Entry<String, Object> entry : query.entrySet()) {
+            criteria.andLike(entry.getKey(), "%" + entry.getValue().toString() + "%");
+        }
+        Page<Object> result = PageHelper.startPage(query.getPage(), query.getLimit());
+        List<T> list = mapper.selectByExample(example);
+        return new TableResultResponse<T>(result.getTotal(), list);
+    }
 
 }

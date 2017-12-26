@@ -2,8 +2,6 @@ package com.cssrc.common.util;
 
 
 import com.cssrc.common.vo.TreeNode;
-import com.github.wxiaoqi.gate.common.vo.TreeNode;
-
 import java.util.ArrayList;
 import java.util.List;
 

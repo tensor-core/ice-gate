@@ -13,9 +13,8 @@
         <module>ice-common</module>
         <module>ice-zuul</module>
         <module>ice-uc</module>
-        <module>ice-config</module>
-        <module>ice-config</module>
         <module>ice-config-server</module>
+        <module>ice-generator</module>
     </modules>
 
     <parent>

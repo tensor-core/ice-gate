@@ -1,24 +1,11 @@
-package com..common.msg;
+package com.cssrc.common.msg;
 
-/**
- * ${DESCRIPTION}
- *
- * @author wanghaobin
- * @create 2017-06-09 7:32
- */
 public class ListRestResponse<T> {
-    boolean rel;
     String msg;
     T result;
     int count;
 
-    public boolean isRel() {
-        return rel;
-    }
 
-    public void setRel(boolean rel) {
-        this.rel = rel;
-    }
 
     public String getMsg() {
         return msg;
@@ -49,8 +36,8 @@ public class ListRestResponse<T> {
         return this;
     }
 
-    public ListRestResponse rel(boolean rel) {
-        this.setRel(rel);
+    public ListRestResponse count(Long count) {
+        this.setCount(count.intValue());
         return this;
     }
 
@@ -63,4 +50,5 @@ public class ListRestResponse<T> {
         this.setResult(result);
         return this;
     }
+
 }

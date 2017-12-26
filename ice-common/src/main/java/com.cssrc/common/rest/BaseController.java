@@ -2,15 +2,15 @@ package com.cssrc.common.rest;
 
 import com.cssrc.common.biz.BaseBiz;
 import com.cssrc.common.msg.ObjectRestResponse;
+import com.cssrc.common.msg.TableResultResponse;
+import com.cssrc.common.util.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Base64Utils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ${DESCRIPTION}
@@ -54,6 +54,15 @@ public class BaseController<Biz extends BaseBiz,Entity> {
     @ResponseBody
     public List<Entity> list(){
         return baseBiz.selectListAll();
+    }
+
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
+    @ResponseBody
+    public TableResultResponse<Entity> list(@RequestParam Map<String, Object> params){
+        //查询列表数据
+
+        Query query = new Query(params);
+        return baseBiz.selectByQuery(query);
     }
 
     public String getCurrentUserName(){

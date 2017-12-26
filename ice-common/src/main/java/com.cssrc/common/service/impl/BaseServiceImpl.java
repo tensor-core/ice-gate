@@ -1,6 +1,6 @@
 package com.cssrc.common.service.impl;
 
-import com.github.wxiaoqi.gate.common.service.BaseService;
+import com.cssrc.common.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;
 
