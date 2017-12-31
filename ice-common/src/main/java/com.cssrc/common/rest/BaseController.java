@@ -1,6 +1,7 @@
 package com.cssrc.common.rest;
 
 import com.cssrc.common.biz.BaseBiz;
+import com.cssrc.common.context.BaseContextHandler;
 import com.cssrc.common.msg.ObjectRestResponse;
 import com.cssrc.common.msg.TableResultResponse;
 import com.cssrc.common.util.Query;
@@ -26,47 +27,46 @@ public class BaseController<Biz extends BaseBiz,Entity> {
 
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
-    public ObjectRestResponse<Entity> add(Entity entity){
+    public ObjectRestResponse<Entity> add(@RequestBody Entity entity){
         baseBiz.insertSelective(entity);
-        return new ObjectRestResponse<Entity>().rel(true);
+        return new ObjectRestResponse<Entity>();
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     @ResponseBody
     public ObjectRestResponse<Entity> get(@PathVariable int id){
-        return new ObjectRestResponse<Entity>().rel(true).result(baseBiz.selectById(id));
+        ObjectRestResponse<Entity> entityObjectRestResponse = new ObjectRestResponse<>();
+        Object o = baseBiz.selectById(id);
+        entityObjectRestResponse.data((Entity)o);
+        return entityObjectRestResponse;
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
     @ResponseBody
-    public ObjectRestResponse<Entity> update(Entity entity){
-        baseBiz.updateById(entity);
-        return new ObjectRestResponse<Entity>().rel(true);
+    public ObjectRestResponse<Entity> update(@RequestBody Entity entity){
+        baseBiz.updateSelectiveById(entity);
+        return new ObjectRestResponse<Entity>();
     }
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @ResponseBody
     public ObjectRestResponse<Entity> remove(@PathVariable int id){
         baseBiz.deleteById(id);
-        return new ObjectRestResponse<Entity>().rel(true);
+        return new ObjectRestResponse<Entity>();
     }
 
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     @ResponseBody
-    public List<Entity> list(){
+    public List<Entity> all(){
         return baseBiz.selectListAll();
     }
-
     @RequestMapping(value = "/page",method = RequestMethod.GET)
     @ResponseBody
     public TableResultResponse<Entity> list(@RequestParam Map<String, Object> params){
         //查询列表数据
-
         Query query = new Query(params);
         return baseBiz.selectByQuery(query);
     }
-
     public String getCurrentUserName(){
-        String authorization = request.getHeader("Authorization");
-        return new String(Base64Utils.decodeFromString(authorization));
+        return BaseContextHandler.getUsername();
     }
 }

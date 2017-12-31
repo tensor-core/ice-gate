@@ -42,10 +42,10 @@ public class EntityUtils {
 		String name = "";
 		String id = "";
 		if(request!=null) {
-			hostIp = String.valueOf(request.getAttribute("userHost"));
-			name = String.valueOf(request.getAttribute("userName"));
+			hostIp = String.valueOf(request.getHeader("userHost"));
+			name = String.valueOf(request.getHeader("userName"));
 			name = URLDecoder.decode(name);
-			id = String.valueOf(request.getAttribute("userId"));
+			id = String.valueOf(request.getHeader("userId"));
 		}
 		// 默认属性
 		String[] fields = {"crtName","crtUser","crtHost","crtTime"};
@@ -71,10 +71,10 @@ public class EntityUtils {
 		String name = "";
 		String id = "";
 		if(request!=null) {
-			hostIp = String.valueOf(request.getAttribute("userHost"));
-			name = String.valueOf(request.getAttribute("userName"));
+			hostIp = String.valueOf(request.getHeader("userHost"));
+			name = String.valueOf(request.getHeader("userName"));
 			name = URLDecoder.decode(name);
-			id = String.valueOf(request.getAttribute("userId"));
+			id = String.valueOf(request.getHeader("userId"));
 		}
 		// 默认属性
 		String[] fields = {"updName","updUser","updHost","updTime"};
@@ -112,8 +112,9 @@ public class EntityUtils {
 	 * @date 2016年4月28日
 	 */
 	public static <T> boolean isPKNotNull(T entity,String field){
-		if(!ReflectionUtils.hasField(entity, field))
+		if(!ReflectionUtils.hasField(entity, field)) {
 			return false;
+		}
 		Object value = ReflectionUtils.getFieldValue(entity, field);
 		return value!=null&&!"".equals(value);
 	}

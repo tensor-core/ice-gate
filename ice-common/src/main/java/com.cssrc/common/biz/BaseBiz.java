@@ -1,28 +1,24 @@
 package com.cssrc.common.biz;
 
+import com.cssrc.common.exception.BaseException;
 import com.cssrc.common.msg.TableResultResponse;
 import com.cssrc.common.util.EntityUtils;
 import com.cssrc.common.util.EntityUtils;
 import com.cssrc.common.util.Query;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import tk.mybatis.mapper.common.Mapper;
-import tk.mybatis.mapper.entity.Example;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.entity.Example;
 
-/**
- * Created by zhw
- * Date: 17/1/13
- * Time: 15:13
- * Version 1.0.0
- */
 public abstract class BaseBiz<M extends Mapper<T>, T> {
     @Autowired
     protected M mapper;
+
     public void setMapper(M mapper) {
         this.mapper = mapper;
     }

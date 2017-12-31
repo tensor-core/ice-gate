@@ -1,10 +1,12 @@
 package com.cssrc.generator.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.*;
 
 @Table(name = "base_user")
-public class BaseUser {
+public class BaseUser implements Serializable{
     @Id
     private Integer id;
 
@@ -478,5 +480,19 @@ public class BaseUser {
      */
     public void setAttr8(String attr8) {
         this.attr8 = attr8;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseUser baseUser = (BaseUser) o;
+        return Objects.equals(id, baseUser.id) &&
+                Objects.equals(username, baseUser.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username);
     }
 }

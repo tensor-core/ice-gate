@@ -11,7 +11,7 @@
         <module name="ice-config-server" />
         <module name="ice-eureka" />
         <module name="ice-generator" />
-        <module name="ice-uc" />
+        <module name="ice-test" />
         <module name="ice-zuul" />
       </profile>
     </annotationProcessing>
@@ -21,7 +21,8 @@
       <module name="ice-config-server" target="1.8" />
       <module name="ice-eureka" target="1.8" />
       <module name="ice-gate" target="1.8" />
-      <module name="ice-generator" target="1.7" />
+      <module name="ice-generator" target="1.8" />
+      <module name="ice-test" target="1.8" />
       <module name="ice-uc" target="1.8" />
       <module name="ice-zuul" target="1.8" />
     </bytecodeTargetLevel>
