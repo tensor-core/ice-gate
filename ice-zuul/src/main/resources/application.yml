@@ -1,13 +1,18 @@
 spring:
   application:
-    name: gate
+    name: ice-gate
 zuul:
+  ignored-services: "*"
+  sensitive-headers:
   prefix: /api #拦截所有api 打头的请求都经过zuul路由
   routes:  #路由表定义
     user-center:
       path: /uc/**
       serviceId: user-center
       #stripPrefix:false #不移除前缀
+    auth-server:
+      path: /auth/**
+      serviceId: ice-auth
 eureka:
   client:
     service-url:
@@ -23,7 +28,21 @@ server:
 ribbon:
   eureka
 
+jwt:
+  token-header: Authorization
+  pub-key:
+    path: /Users/bingwu/Downloads/ice-gate/ice-zuul/src/main/resources/jwt/pub.key
 
+client:
+  id: ice-gate
+  secret: 123456
+  token-header: client-header
+  pub-key:
+    path: /Users/bingwu/Downloads/ice-gate/ice-zuul/src/main/resources/client/pub.key
+
+gate:
+  ignore:
+    startWith: /static,/auth/jwt
 
 
 
