@@ -27,6 +27,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         commonPathPatterns.add("/user/front/info");
         commonPathPatterns.add("/user/front/menus");
         commonPathPatterns.add("/menu/all");
+
+        //测试spring cloud stream 消息队列发送
+        commonPathPatterns.add("/user/message1");
+        commonPathPatterns.add("/user/message2");
+        commonPathPatterns.add("/user/message3");
+
         //先验证服务
         //registry.addInterceptor(getClientInterceptor()).addPathPatterns("/**").excludePathPatterns(commonPathPatterns.toArray(new String[]{}));
         //再验证用户

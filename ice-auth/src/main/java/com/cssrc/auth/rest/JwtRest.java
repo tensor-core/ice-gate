@@ -32,4 +32,11 @@ public class JwtRest {
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
+    @RequestMapping(value = "/token1",method = RequestMethod.POST)
+    public String authorize1(@RequestBody String username,@RequestBody String password) throws Exception {
+        //1、检验账户合法性
+        final String token = userService.login(username, password);
+        return token;
+    }
+
 }

@@ -16,10 +16,16 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
         </dependency>
+        <!-- 管理工具／web 查看堆栈，动态刷新配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!-- web 项目 集成容器tomcat
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>-->
         <!--用于测试的，本例可省略-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
