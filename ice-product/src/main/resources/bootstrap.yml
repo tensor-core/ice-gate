@@ -1,0 +1,9 @@
+spring:
+  cloud:
+   config:
+     discovery:
+       service-id: config-server
+       enabled: true
+     label: master
+     name: product-center
+     profile: test

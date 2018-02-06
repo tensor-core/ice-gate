@@ -13,6 +13,9 @@ zuul:
     auth-server:
       path: /auth/**
       serviceId: ice-auth
+    product-server:
+      path: /product/**
+      serviceId: product-center
 eureka:
   client:
     service-url:

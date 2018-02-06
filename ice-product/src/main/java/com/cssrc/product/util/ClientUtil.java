@@ -1,4 +1,4 @@
-package com.cssrc.uc.util;
+package com.cssrc.product.util;
 
 import com.cssrc.common.exception.auth.JwtIllegalArgumentException;
 import com.cssrc.common.exception.auth.JwtSignatureException;
@@ -7,8 +7,8 @@ import com.cssrc.common.msg.BaseResponse;
 import com.cssrc.common.msg.ObjectRestResponse;
 import com.cssrc.common.util.jwt.IJwtInfo;
 import com.cssrc.common.util.jwt.JwtHelper;
-import com.cssrc.uc.config.ClientConfig;
-import com.cssrc.uc.rpc.ClientAuthRpc;
+import com.cssrc.product.config.ClientConfig;
+import com.cssrc.product.rpc.ClientAuthRpc;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
 import org.slf4j.Logger;

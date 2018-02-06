@@ -17,6 +17,7 @@
         <module>ice-generator</module>
         <module>ice-auth</module>
         <module>ice-auth-client</module>
+        <module>ice-product</module>
     </modules>
 
     <parent>

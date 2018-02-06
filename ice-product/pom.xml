@@ -9,9 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ice-uc</artifactId>
-    <packaging>pom</packaging>
-
+    <artifactId>ice-product</artifactId>
     <properties>
         <!-- 依赖版本 -->
         <mapper.version>3.4.0</mapper.version>
