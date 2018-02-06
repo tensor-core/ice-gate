@@ -2,7 +2,7 @@
 ### 框架简介
 
 ```shell
-- ice-gate主要采用了spring-cloud框架。
+ice-gate主要采用了spring-cloud框架，主要目录结构如下
 
 ├── config-repos                 // 配置文件存放地址
 ├── ice-auth                     // 授权以及鉴权中心
