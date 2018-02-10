@@ -16,6 +16,9 @@ zuul:
     product-server:
       path: /product/**
       serviceId: product-center
+    warehouse-server:
+      path: /warehouse/**
+      serviceId: warehouse-center
 eureka:
   client:
     service-url:

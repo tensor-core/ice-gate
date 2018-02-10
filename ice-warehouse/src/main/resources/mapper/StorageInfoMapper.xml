@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cssrc.warehouse.mapper.StorageInfoMapper">
+  <resultMap id="BaseResultMap" type="com.cssrc.warehouse.entity.StorageInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId" />
+    <result column="state" jdbcType="CHAR" property="state" />
+    <result column="warehouse_amount" jdbcType="INTEGER" property="warehouseAmount" />
+    <result column="warehouse_date" jdbcType="TIMESTAMP" property="warehouseDate" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="warehouse_name" jdbcType="VARCHAR" property="warehouseName" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="crt_time" jdbcType="TIMESTAMP" property="crtTime" />
+    <result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
+    <result column="crt_name" jdbcType="VARCHAR" property="crtName" />
+    <result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
+    <result column="upd_time" jdbcType="TIMESTAMP" property="updTime" />
+    <result column="upd_user" jdbcType="VARCHAR" property="updUser" />
+    <result column="upd_name" jdbcType="VARCHAR" property="updName" />
+    <result column="upd_host" jdbcType="VARCHAR" property="updHost" />
+  </resultMap>
+</mapper>

@@ -18,7 +18,7 @@ public class ProductInfo {
     private String name;
 
     /**
-     * 类别编号
+     * 状态编号
      */
     private String goodstypeid;
 
@@ -28,7 +28,7 @@ public class ProductInfo {
     private String unit;
 
     /**
-     * 库存数量
+     * 生产数量
      */
     private Integer qty;
 
@@ -98,18 +98,18 @@ public class ProductInfo {
     }
 
     /**
-     * 获取类别编号
+     * 获取状态编号
      *
-     * @return goodstypeid - 类别编号
+     * @return goodstypeid - 状态编号
      */
     public String getGoodstypeid() {
         return goodstypeid;
     }
 
     /**
-     * 设置类别编号
+     * 设置状态编号
      *
-     * @param goodstypeid 类别编号
+     * @param goodstypeid 状态编号
      */
     public void setGoodstypeid(String goodstypeid) {
         this.goodstypeid = goodstypeid;
@@ -134,18 +134,18 @@ public class ProductInfo {
     }
 
     /**
-     * 获取库存数量
+     * 获取生产数量
      *
-     * @return qty - 库存数量
+     * @return qty - 生产数量
      */
     public Integer getQty() {
         return qty;
     }
 
     /**
-     * 设置库存数量
+     * 设置生产数量
      *
-     * @param qty 库存数量
+     * @param qty 生产数量
      */
     public void setQty(Integer qty) {
         this.qty = qty;

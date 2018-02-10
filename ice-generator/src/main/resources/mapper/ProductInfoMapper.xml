@@ -22,6 +22,62 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="goodsid" jdbcType="VARCHAR" property="goodsid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="goodstypeid" jdbcType="CHAR" property="goodstypeid" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="qty" jdbcType="INTEGER" property="qty" />
+    <result column="goodscode" jdbcType="VARCHAR" property="goodscode" />
+    <result column="shortname" jdbcType="VARCHAR" property="shortname" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.cssrc.generator.entity.ProductInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goodsid" jdbcType="VARCHAR" property="goodsid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="goodstypeid" jdbcType="CHAR" property="goodstypeid" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="qty" jdbcType="INTEGER" property="qty" />
+    <result column="goodscode" jdbcType="VARCHAR" property="goodscode" />
+    <result column="shortname" jdbcType="VARCHAR" property="shortname" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.cssrc.generator.entity.ProductInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goodsid" jdbcType="VARCHAR" property="goodsid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="goodstypeid" jdbcType="CHAR" property="goodstypeid" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="qty" jdbcType="INTEGER" property="qty" />
+    <result column="goodscode" jdbcType="VARCHAR" property="goodscode" />
+    <result column="shortname" jdbcType="VARCHAR" property="shortname" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.cssrc.generator.entity.ProductInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goodsid" jdbcType="VARCHAR" property="goodsid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="goodstypeid" jdbcType="CHAR" property="goodstypeid" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="qty" jdbcType="INTEGER" property="qty" />
+    <result column="goodscode" jdbcType="VARCHAR" property="goodscode" />
+    <result column="shortname" jdbcType="VARCHAR" property="shortname" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.cssrc.generator.entity.ProductInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goodsid" jdbcType="VARCHAR" property="goodsid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="goodstypeid" jdbcType="INTEGER" property="goodstypeid" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
     <result column="topqty" jdbcType="INTEGER" property="topqty" />

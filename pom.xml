@@ -18,6 +18,7 @@
         <module>ice-auth</module>
         <module>ice-auth-client</module>
         <module>ice-product</module>
+        <module>ice-warehouse</module>
     </modules>
 
     <parent>

@@ -28,6 +28,8 @@
                              type="XMLMAPPER"/>
 
         <table tableName="product_info" domainObjectName="ProductInfo" />
+        <table tableName="warehouse_info" domainObjectName="WarehouseInfo" />
+        <table tableName="storage_info" domainObjectName="StorageInfo" />
         <!--<generatedKey column="id" identity="false" sqlStatement="myql"/>-->
         <!--</table>-->
         <!--<table tableName="base_menu" domainObjectName="Menu" >-->

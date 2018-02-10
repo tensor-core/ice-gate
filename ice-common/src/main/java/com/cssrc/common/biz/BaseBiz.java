@@ -47,7 +47,7 @@ public abstract class BaseBiz<M extends Mapper<T>, T> {
 
 
     public void insert(T entity) {
-        EntityUtils.setCreatAndUpdatInfo(entity);
+        //EntityUtils.setCreatAndUpdatInfo(entity);
         mapper.insert(entity);
     }
 

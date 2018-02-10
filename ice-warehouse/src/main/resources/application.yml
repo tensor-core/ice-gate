@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: warehouse-center
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/ag_admin?useUnicode=true&characterEncoding=UTF8
+    username: root
+    password: 123456
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  cloud:
+    stream:
+      defaultBinder: defaultRabbit
+      bindings:
+        inputStorage:
+          destination: mqTestStorage
+          group: storageReceiveGroup1     # 具体分组 对应 MQ 是 队列名称 并且持久化队列
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+             rabbitmq:
+              host: 127.0.0.1
+              username: guest
+              password: guest
+
+mybatis:
+    basepackage: com.cssrc.warehouse.mapper
+    xmlLocation: classpath:mapper/**/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+      prefer-ip-address: true
+      hostname: localhost
+      lease-renewal-interval-in-seconds: 5
+      lease-expiration-duration-in-seconds: 15
+server:
+  port: 7773
+
+jwt:
+  serviceId: ice-auth
+  token-header: Authorization
+  pub-key:
+    path: /Users/bingwu/Downloads/ice-gate/ice-warehouse/src/main/resources/jwt/pub.key
+
+client:
+  id: user-center
+  secret: 123456
+  token-header: client-token
+  pub-key:
+    path: /Users/bingwu/Downloads/ice-gate/ice-warehouse/src/main/resources/client/pub.key
+
+redis:
+  pool:
+    maxActive: 300
+    maxIdle: 100
+    maxWait: 1000
+  host: 127.0.0.1
+  port: 6379
+  password:
+  timeout: 2000
+  # 服务或应用名
+  sysName: warehouse-center
+  enable: true
+  database: 0
