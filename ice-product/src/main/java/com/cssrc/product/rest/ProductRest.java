@@ -32,10 +32,12 @@ public class ProductRest extends BaseController<ProductInfoBiz,ProductInfo> {
         System.out.println(id);
         Object o = baseBiz.selectById(id);
         ProductInfo info = (ProductInfo)o;
-        info.setGoodstypeid("已入库");
-        biz.updateById(info);
-        //给仓库部门发送消息
-        sendMessage(info);
+        if(!"已入库".equals(info.getGoodstypeid())) {
+            info.setGoodstypeid("已入库");
+            biz.updateById(info);
+            //给仓库部门发送消息
+            sendMessage(info);
+        }
         return new ObjectRestResponse<ProductInfo>();
     }
 

@@ -28,10 +28,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(String username, String password) throws Exception {
         UserInfo info = userService.validate(username,password);
+        System.out.println(username);
         String token = "";
         //if (!StringUtils.isEmpty(info.getId())) {
-            token = jwtUtil.generateToken(new JwtInfo("admin", "1", info.getName()));
+            token = jwtUtil.generateToken(new JwtInfo(username, info.getId(), info.getName()));
+            //并放入map中
+            UserInfo.map.put(username, info);
         //}
+        System.out.println(username+"--token:"+token);
         return token;
     }
 }

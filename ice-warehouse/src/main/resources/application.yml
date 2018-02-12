@@ -53,7 +53,7 @@ eureka:
       lease-renewal-interval-in-seconds: 5
       lease-expiration-duration-in-seconds: 15
 server:
-  port: 7773
+  port: 7774
 
 jwt:
   serviceId: ice-auth

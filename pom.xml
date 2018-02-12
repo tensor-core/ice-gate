@@ -19,6 +19,7 @@
         <module>ice-auth-client</module>
         <module>ice-product</module>
         <module>ice-warehouse</module>
+        <module>ice-chat</module>
     </modules>
 
     <parent>

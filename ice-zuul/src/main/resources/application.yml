@@ -19,6 +19,9 @@ zuul:
     warehouse-server:
       path: /warehouse/**
       serviceId: warehouse-center
+    chat-server:
+      path: /chat/**
+      serviceId: chat-center
 eureka:
   client:
     service-url:

@@ -110,7 +110,6 @@ public class MenuRest extends BaseController<MenuBiz, Menu> {
         int userId = userBiz.getUserByUsername(getCurrentUserName()).getId();
         return baseBiz.getUserAuthoritySystemByUserId(userId);
     }
-
     private List<MenuTree> getMenuTree(List<Menu> menus,int root) {
         List<MenuTree> trees = new ArrayList<MenuTree>();
         MenuTree node = null;
@@ -122,6 +121,7 @@ public class MenuRest extends BaseController<MenuBiz, Menu> {
         }
         return TreeUtil.bulid(trees,root) ;
     }
+
 
 
 }

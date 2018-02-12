@@ -13,6 +13,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/ice-auth-client/pom.xml" />
+        <option value="$PROJECT_DIR$/ice-chat/pom.xml" />
         <option value="$PROJECT_DIR$/ice-config/pom.xml" />
         <option value="$PROJECT_DIR$/ice-eureka/pom.xml" />
         <option value="$PROJECT_DIR$/ice-test/pom.xml" />

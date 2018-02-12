@@ -1,12 +1,21 @@
 package com.cssrc.common.bean;
 
+import com.cssrc.common.constant.ChatConstants;
 import com.cssrc.common.util.jwt.IJwtInfo;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UserInfo implements IJwtInfo{
     String username;
     String userId;
     String name;
     String password;
+    String code;
+    String headImg;
+    Long id;
+
+    public static Map<String, UserInfo> map = new ConcurrentHashMap<>();
 
     public UserInfo() {
     }
@@ -16,6 +25,9 @@ public class UserInfo implements IJwtInfo{
         this.userId = userId;
         this.name = name;
         this.password = password;
+        this.headImg = ChatConstants.headImg();
+        this.code = ChatConstants.code();
+        this.id = System.currentTimeMillis();
     }
 
 
@@ -53,5 +65,25 @@ public class UserInfo implements IJwtInfo{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

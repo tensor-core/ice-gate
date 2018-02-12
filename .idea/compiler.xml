@@ -20,6 +20,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="ice-auth" target="1.8" />
       <module name="ice-auth-client" target="1.8" />
+      <module name="ice-chat" target="1.8" />
       <module name="ice-common" target="1.8" />
       <module name="ice-config" target="1.8" />
       <module name="ice-config-server" target="1.8" />
