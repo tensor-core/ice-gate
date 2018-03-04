@@ -1,6 +1,7 @@
 package com.cssrc.auth;
 
 import com.cssrc.auth.autoconfigure.MapperScan;
+import com.cssrc.common.blockchain.ExecuteCommands;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableFeignClients
 public class AuthServerBootstrap {
     public static void main(String[] args) {
+
         SpringApplication.run(AuthServerBootstrap.class,args);
     }
 }

@@ -1,206 +1,152 @@
 package com.cssrc.common.blockchain;
 
-import java.security.Security;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
+
+import javax.crypto.Cipher;
 
 public class NoobChain {
-
+	
 	public static ArrayList<Block> blockchain = new ArrayList<Block>();
-	public static HashMap<String, TransactionOutput> UTXOs = new HashMap<String, TransactionOutput>();
 	public static int difficulty = 3;
-	public static float minimumTransaction = 0.1f;
+	public static String product_pub_key_path="/Users/bingwu/downloads/product.pubkey";                 
+	public static String product_pri_key_path="/Users/bingwu/downloads/product.prikey";                 
+	public static String warehouse_pub_key_path="/Users/bingwu/downloads/warehouse.pubkey";             
+	public static String warehouse_pri_key_path="/Users/bingwu/downloads/warehouse.prikey";             
+	public static String logistics_pub_key_path="/Users/bingwu/downloads/logistics.pubkey";             
+	public static String logistics_pri_key_path="/Users/bingwu/downloads/logistics.prikey";             
+	public static String reciept_pub_key_path="/Users/bingwu/downloads/reciept.pubkey";                 
+	public static String reciept_pri_key_path="/Users/bingwu/downloads/reciept.prikey";                 
 
-	public static Wallet walletA;
-	public static Wallet walletB;
-
-	public static Wallet walletC;
-	public static Wallet walletD;
-	
-	public static String companyId1 = "001";
-	public static String companyId2 = "002";
-
-	public static Transaction genesisTransaction;
-
-
-	public static void test(String companyId,float sum,float num1,float num2) {
-		walletA = new Wallet();
-		walletB = new Wallet();
-		Wallet coinbase = new Wallet();
-		// create genesis transaction, which sends 100 NoobCoin to walletA:
-		genesisTransaction = new Transaction(coinbase.publicKey, walletA.publicKey,companyId, sum, null);
-		genesisTransaction.generateSignature(coinbase.privateKey); // manually sign the genesis transaction
-		genesisTransaction.transactionId = "0"; // manually set the transaction id
-		genesisTransaction.outputs.add(new TransactionOutput(genesisTransaction.reciepient,genesisTransaction.companyId, genesisTransaction.value,
-				genesisTransaction.transactionId)); // manually add the Transactions Output
-		UTXOs.put(genesisTransaction.outputs.get(0).id, genesisTransaction.outputs.get(0)); // its important to store
-																							// our first transaction in
-																							// the UTXOs list.
-		System.out.println("Creating and Mining Genesis block... ");
-		Block genesis = new Block("0");
-		genesis.addTransaction(genesisTransaction);
-		addBlock(genesis);
-
-		// testing
-		Block block1 = new Block(genesis.hash);
-		System.out.println("\nWalletA's balance use "+companyId+" is: " + walletA.getBalance(companyId));	
-		System.out.println("\nWalletA is Attempting to send funds (40) to WalletB use "+companyId+"...");
-		block1.addTransaction(walletA.sendFunds(walletB.publicKey,companyId, num1));
-		addBlock(block1);
-		System.out.println("\nWalletA's balance use "+companyId+" is: " + walletA.getBalance(companyId));
-		
-		Block block2 = new Block(block1.hash);
-		System.out.println("\nWalletA Attempting to send funds (50) to WalletB use "+companyId+" ...");
-		block2.addTransaction(walletA.sendFunds(walletB.publicKey,companyId, num2));
-		addBlock(block2);
-		System.out.println("\nWalletA's balance use "+companyId+" is: " + walletA.getBalance(companyId));
-		System.out.println("WalletB's balance use "+companyId+" is: " + walletB.getBalance(companyId));
-		
-
-
+	public static void main(String[] args) {	
+		byte[] cipherText = null;                                                                                                       
+		boolean validate = false;                                                                                                       
+	                                                                                                                                 
+	                                                                                                                                 
+//		try {                                                                                                                           
+//			System.out.println("Trying to Mine block 1... ");                                                                           
+//			Message message1 = new Message(1,"a",10,"生产消息","product","warehouse");                                                      
+//			cipherText = StringUtil.encypt(message1.toString(), product_pub_key_path);                                                                        
+//			addBlock(new Block(message1, "0"));                                                                                         
+//		}catch (Exception e){                                                                                                           
+//	                                                                                                                                 
+//		}                                                                                                                               
+	                                                                                                                                 
+//		validate = false;                                                                                                               
+//		try {                                                                                                                           
+//			validate = StringUtil.decrypt(cipherText, product_pri_key_path);                                                                       
+//			if(validate) {                                                                                                              
+//				Message message2 = new Message(2, "a", 10, "仓储消息","warehouse","logistics");                                             
+//				cipherText = StringUtil.encypt(message2, warehouse_pub_key_path);                                                                  
+//				System.out.println("Trying to Mine block 2... ");                                                                       
+//				addBlock(new Block(message2, blockchain.get(blockchain.size() - 1).hash));                                              
+//			}                                                                                                                           
+//		}catch (Exception e){                                                                                                           
+//		}                                                                                                                               
+//	                                                                                                                                 
+//		validate =false;                                                                                                                
+//		try {                                                                                                                           
+//			//cipherText = null;                                                                                                        
+//			validate = StringUtil.decrypt(cipherText, warehouse_pri_key_path);                                                                     
+//			if(validate) {                                                                                                              
+//				Message message3 = new Message(1, "a", 1, "物流消息","logistics","reciept");                                                
+//				cipherText = StringUtil.encypt(message3, logistics_pub_key_path);                                                                  
+//				System.out.println("Trying to Mine block 3... ");                                                                       
+//				addBlock(new Block(message3, blockchain.get(blockchain.size() - 1).hash));                                              
+//			}                                                                                                                           
+//		}catch (Exception e){                                                                                                           
+//	                                                                                                                                 
+//		}                                                                                                                               
+//	                                                                                                                                 
+//		validate = false;                                                                                                               
+//		try {                                                                                                                           
+//			validate = StringUtil.decrypt(cipherText, logistics_pri_key_path);                                                                     
+//			if(validate) {                                                                                                              
+//				Message message4 = new Message(1, "a", 1, "收货消息","reciept","next");                                                     
+//				cipherText = StringUtil.encypt(message4, reciept_pub_key_path);                                                                    
+//				System.out.println("Trying to Mine block 4... ");                                                                       
+//				addBlock(new Block(message4, blockchain.get(blockchain.size() - 1).hash));                                              
+//			}                                                                                                                           
+//		}catch(Exception e){                                                                                                            
+//	                                                                                                                                 
+//		}                                                                                                                               
+//	                                                                                                                                 
+		System.out.println("\nBlockchain is Valid: " + isChainValid());                                                                 
+		                                                                                                                                
+		String blockchainJson = StringUtil.getJson(blockchain);                                                                         
+		System.out.println("\nThe block chain: ");                                                                                      
+		System.out.println(blockchainJson);                                                                                             
 	}
 	
-
-
-	public static void main(String[] args) {
-		// add our blocks to the blockchain ArrayList:
-		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider()); // Setup Bouncey castle as a
-																						// Security Provider
-
-		// Create wallets:
-		
-		test(companyId1,100f,20f,30f);
-		test(companyId2,100f,30f,30f);
-		
-		
-		
-
-//		Block block2 = new Block(genesis1.hash);
-//		System.out.println("\nWalletA Attempting to send funds (50) to WalletB use companyId2 ...");
-//		block2.addTransaction(walletA.sendFunds(walletB.publicKey,companyId2, 50f));
-//		addBlock(block2);
-//		System.out.println("\nWalletA's balance use companyId1 is: " + walletA.getBalance(companyId1));
-//		System.out.println("WalletB's balance use companyId1 is: " + walletB.getBalance(companyId1));
-//		
-//		System.out.println("\nWalletA's balance use companyId2 is: " + walletA.getBalance(companyId2));
-//		System.out.println("WalletB's balance use companyId2 is: " + walletB.getBalance(companyId2));
-
-//		Block block3 = new Block(block2.hash);
-//		System.out.println("\nWalletB is Attempting to send funds (20) to WalletA...");
-//		block3.addTransaction(walletB.sendFunds(walletA.publicKey,companyId1, 20));
-//		System.out.println("\nWalletA's balance is: " + walletA.getBalance(companyId1));
-//		System.out.println("WalletB's balance is: " + walletB.getBalance(companyId1));
-//
-//		Block block4 = new Block(block3.hash);
-//		System.out.println("\nWalletA is Attempting to send funds (20) to WalletC...");
-//		block4.addTransaction(walletA.sendFunds(walletC.publicKey,companyId1, 20));
-//		System.out.println("\nWalletA's balance is: " + walletA.getBalance(companyId1));
-//		System.out.println("WalletB's balance is: " + walletB.getBalance(companyId1));
-//		System.out.println("WalletC's balance is: " + walletC.getBalance(companyId1));
-//
-//		Block block5 = new Block(block4.hash);
-//		System.out.println("\nWalletA is Attempting to send funds (20) to WalletC...");
-//		block5.addTransaction(walletA.sendFunds(walletC.publicKey,companyId2, 20));
-//		System.out.println("\nWalletA's balance is: " + walletA.getBalance(companyId2));
-//		System.out.println("WalletB's balance is: " + walletB.getBalance(companyId2));
-//		System.out.println("WalletC's balance is: " + walletC.getBalance(companyId2));
-		
-		//isChainValid();
-
-
-
-		
-
-		// String blockchainJson = StringUtil.getJson(blockchain);
-		// System.out.println("\nThe block chain: ");
-		// System.out.println(blockchainJson);
-
-	}
-
-	public static Boolean isChainValid() {
-		Block currentBlock;
-		Block previousBlock;
-		String hashTarget = new String(new char[difficulty]).replace('\0', '0');
-		HashMap<String, TransactionOutput> tempUTXOs = new HashMap<String, TransactionOutput>(); // a temporary working
-																									// list of unspent
-																									// transactions at a
-																									// given block
-																									// state.
-		tempUTXOs.put(genesisTransaction.outputs.get(0).id, genesisTransaction.outputs.get(0));
-
-		// loop through blockchain to check hashes:
-		for (int i = 1; i < blockchain.size(); i++) {
-
-			currentBlock = blockchain.get(i);
-			previousBlock = blockchain.get(i - 1);
-			// compare registered hash and calculated hash:
-			if (!currentBlock.hash.equals(currentBlock.calculateHash())) {
-				System.out.println("#Current Hashes not equal");
-				return false;
-			}
-			// compare previous hash and registered previous hash
-			if (!previousBlock.hash.equals(currentBlock.previousHash)) {
-				System.out.println("#Previous Hashes not equal");
-				return false;
-			}
-			// check if hash is solved
-			if (!currentBlock.hash.substring(0, difficulty).equals(hashTarget)) {
-				System.out.println("#This block hasn't been mined");
-				return false;
-			}
-
-			// loop thru blockchains transactions:
-			TransactionOutput tempOutput;
-			for (int t = 0; t < currentBlock.transactions.size(); t++) {
-				Transaction currentTransaction = currentBlock.transactions.get(t);
-
-				if (!currentTransaction.verifiySignature()) {
-					System.out.println("#Signature on Transaction(" + t + ") is Invalid");
-					return false;
-				}
-				if (currentTransaction.getInputsValue() != currentTransaction.getOutputsValue()) {
-					System.out.println("#Inputs are note equal to outputs on Transaction(" + t + ")");
-					return false;
-				}
-
-				for (TransactionInput input : currentTransaction.inputs) {
-					tempOutput = tempUTXOs.get(input.transactionOutputId);
-
-					if (tempOutput == null) {
-						System.out.println("#Referenced input on Transaction(" + t + ") is Missing");
-						return false;
-					}
-
-					if (input.UTXO.value != tempOutput.value) {
-						System.out.println("#Referenced input Transaction(" + t + ") value is Invalid");
-						return false;
-					}
-
-					tempUTXOs.remove(input.transactionOutputId);
-				}
-
-				for (TransactionOutput output : currentTransaction.outputs) {
-					tempUTXOs.put(output.id, output);
-				}
-
-				if (currentTransaction.outputs.get(0).reciepient != currentTransaction.reciepient) {
-					System.out.println("#Transaction(" + t + ") output reciepient is not who it should be");
-					return false;
-				}
-				if (currentTransaction.outputs.get(1).reciepient != currentTransaction.sender) {
-					System.out.println("#Transaction(" + t + ") output 'change' is not sender.");
-					return false;
-				}
-
-			}
-
-		}
-		System.out.println("Blockchain is valid");
-		return true;
-	}
-
-	public static void addBlock(Block newBlock) {
-		newBlock.mineBlock(difficulty);
-		blockchain.add(newBlock);
-	}
+	                                                                                           
+	                                                                                                                             
+	public static Boolean isChainValid() {                                                                                       
+		Block currentBlock;                                                                                                      
+		Block previousBlock;                                                                                                     
+		String hashTarget = new String(new char[difficulty]).replace('\0', '0');                                                 
+		                                                                                                                         
+		//loop through blockchain to check hashes:                                                                               
+		for(int i=1; i < blockchain.size(); i++) {                                                                               
+			currentBlock = blockchain.get(i);                                                                                    
+			previousBlock = blockchain.get(i-1);                                                                                 
+			//compare registered hash and calculated hash:                                                                       
+			if(!currentBlock.hash.equals(currentBlock.calculateHash()) ){                                                        
+				System.out.println("Current Hashes not equal");			                                                         
+				return false;                                                                                                    
+			}                                                                                                                    
+			//compare previous hash and registered previous hash                                                                 
+			if(!previousBlock.hash.equals(currentBlock.previousHash) ) {                                                         
+				System.out.println("Previous Hashes not equal");                                                                 
+				return false;                                                                                                    
+			}                                                                                                                    
+			//check if hash is solved                                                                                            
+			if(!currentBlock.hash.substring( 0, difficulty).equals(hashTarget)) {                                                
+				System.out.println("This block hasn't been mined");                                                              
+				return false;                                                                                                    
+			}                                                                                                                    
+			                                                                                                                     
+		}                                                                                                                        
+		return true;                                                                                                             
+	}                                                                                                                            
+	                                                                                                                             
+	public static boolean addBlock(Block newBlock) {                                                                             
+		newBlock.mineBlock(difficulty);                                                                                          
+		//加入区块链之前先要做判断，是否针对同一个productId                                                                                          
+		if(blockchain.size()==0) {                                                                                               
+			blockchain.add(newBlock);                                                                                            
+			return true;                                                                                                         
+		}                                                                                                                        
+		else{                                                                                                                    
+			Block lastBlock = getLastBlock();                                                                                    
+			if (newBlock.getMessage().getProuductId() == lastBlock.getMessage().getProuductId()                                  
+					&&newBlock.getMessage().getFrom().equals(lastBlock.getMessage().getTo())){                                   
+				blockchain.add(newBlock);                                                                                        
+				return true;                                                                                                     
+			}                                                                                                                    
+			else{                                                                                                                
+				System.out.println("addBlock false");                                                                            
+				return false;                                                                                                    
+			}                                                                                                                    
+		}                                                                                                                        
+	}                                                                                                                            
+	                                                                                                                             
+	public static Block getLastBlock(){                                                                                          
+		if(blockchain.size() == 0 || blockchain == null) return null;                                                            
+		return blockchain.get(blockchain.size() -1);                                                                             
+	}                                                                                                                            
+	                                                                                                                                                                                                                                                          
 }

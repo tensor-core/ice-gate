@@ -1,6 +1,9 @@
 package com.cssrc.product.rest;
 
 import com.cssrc.common.MessageInfo.Message;
+import com.cssrc.common.blockchain.ExecuteCommands;
+import com.cssrc.common.blockchain.Server;
+import com.cssrc.common.blockchain.StringUtil;
 import com.cssrc.common.msg.ObjectRestResponse;
 import com.cssrc.common.rest.BaseController;
 import com.cssrc.product.biz.ProductInfoBiz;
@@ -35,9 +38,26 @@ public class ProductRest extends BaseController<ProductInfoBiz,ProductInfo> {
         if(!"已入库".equals(info.getGoodstypeid())) {
             info.setGoodstypeid("已入库");
             biz.updateById(info);
+            //在区块链链条上增加区块
+            ExecuteCommands client = new ExecuteCommands(8888,"client","product");
+
             //给仓库部门发送消息
             sendMessage(info);
         }
+        return new ObjectRestResponse<ProductInfo>();
+    }
+
+    @RequestMapping(value = "/{id}/inChain", method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<ProductInfo> inChain(@PathVariable int id) {
+        System.out.println(id);
+        Object o = baseBiz.selectById(id);
+        ProductInfo info = (ProductInfo)o;
+        String blockchainJson = StringUtil.getJson(Server.blockchain);
+        System.out.println("\nThe block chain: ");
+        System.out.println(blockchainJson);
+
+
         return new ObjectRestResponse<ProductInfo>();
     }
 

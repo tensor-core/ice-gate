@@ -13,6 +13,7 @@
         <module name="ice-eureka" />
         <module name="ice-generator" />
         <module name="ice-product" />
+        <module name="ice-usercenter" />
         <module name="ice-warehouse" />
         <module name="ice-zuul" />
       </profile>
@@ -30,6 +31,7 @@
       <module name="ice-product" target="1.8" />
       <module name="ice-test" target="1.8" />
       <module name="ice-uc" target="1.8" />
+      <module name="ice-usercenter" target="1.8" />
       <module name="ice-warehouse" target="1.8" />
       <module name="ice-zuul" target="1.8" />
     </bytecodeTargetLevel>

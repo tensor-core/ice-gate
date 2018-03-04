@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/ice-generator/ice-generator.iml" filepath="$PROJECT_DIR$/ice-generator/ice-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/ice-product/ice-product.iml" filepath="$PROJECT_DIR$/ice-product/ice-product.iml" />
       <module fileurl="file://$PROJECT_DIR$/ice-uc/ice-uc.iml" filepath="$PROJECT_DIR$/ice-uc/ice-uc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ice-usercenter/ice-usercenter.iml" filepath="$PROJECT_DIR$/ice-usercenter/ice-usercenter.iml" />
       <module fileurl="file://$PROJECT_DIR$/ice-warehouse/ice-warehouse.iml" filepath="$PROJECT_DIR$/ice-warehouse/ice-warehouse.iml" />
       <module fileurl="file://$PROJECT_DIR$/ice-zuul/ice-zuul.iml" filepath="$PROJECT_DIR$/ice-zuul/ice-zuul.iml" />
     </modules>

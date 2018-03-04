@@ -3,13 +3,13 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-auth" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ice-chat" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-config-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-generator" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-product" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-uc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ice-usercenter" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-warehouse" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ice-zuul" charset="UTF-8" />
   </component>
